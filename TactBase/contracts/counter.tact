@@ -1,6 +1,6 @@
 import "@stdlib/deploy";
 
-message Add {
+message CounterValue {
     amount: Int as uint32
 }
 
@@ -14,10 +14,15 @@ contract Counter with Deployable {
     }
 
     receive("increment") {
-        self.counter += 1;
+        self.counter = (self.counter + 1);
+        self.reply(CounterValue{ amount: self.counter }.toCell());
     }
 
-    receive(msg: Add) {
+    receive("query") {
+        self.reply(CounterValue{ amount: self.counter }.toCell());
+    }
+
+    receive(msg: CounterValue) {
         self.counter += msg.amount;
     }
 
