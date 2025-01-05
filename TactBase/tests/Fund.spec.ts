@@ -87,8 +87,8 @@ describe('Fund', () => {
         const fundBalanceBeforeWithdraw = await fund.getBalance();
         const companyBalanceBeforeWithdraw = await company.getBalance();
 
-        console.log("fund balanceBeforeWithdraw: " + fundBalanceBeforeWithdraw);
-        console.log("company balanceBeforeWithdraw: " + companyBalanceBeforeWithdraw);
+        // console.log("fund balanceBeforeWithdraw: " + fundBalanceBeforeWithdraw);
+        // console.log("company balanceBeforeWithdraw: " + companyBalanceBeforeWithdraw);
 
         await fund.send(
             deployer.getSender(),
@@ -104,8 +104,8 @@ describe('Fund', () => {
         const fundBalanceAfterWithdraw = await fund.getBalance();
         const companyBalanceAfterWithdraw = await company.getBalance();
 
-        console.log("fund balanceAfterWithdraw: " + fundBalanceAfterWithdraw);
-        console.log("company balanceAfterWithdraw: " + companyBalanceAfterWithdraw);
+        // console.log("fund balanceAfterWithdraw: " + fundBalanceAfterWithdraw);
+        // console.log("company balanceAfterWithdraw: " + companyBalanceAfterWithdraw);
 
         expect(fundBalanceBeforeWithdraw).toEqual(11n);
         expect(fundBalanceAfterWithdraw).toEqual(4n);
