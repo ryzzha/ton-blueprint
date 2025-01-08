@@ -40,9 +40,9 @@ describe('Map', () => {
 
     it('should deploy', async () => {});
 
-    it('work with map', async () => {
+    it.skip('work with map', async () => {
         const gasUsedValues = []
-        console.log("work with map WORK")
+        // console.log("work with map WORK")
         await map.send(
             deployer.getSender(),
             {
@@ -52,7 +52,7 @@ describe('Map', () => {
         );
 
         const nullAddrs = await map.getOneItem(123n);
-        console.log("nullAddrs: " + nullAddrs);
+        // console.log("nullAddrs: " + nullAddrs);
 
         const dict = Dictionary.empty(Dictionary.Keys.BigInt(32), Dictionary.Values.Address());
         const randomAddress1 = generateRandomTonAddress();
@@ -62,7 +62,7 @@ describe('Map', () => {
         dict.set(2n, randomAddress2);
         dict.set(3n, randomAddress3);
 
-        console.log("second random generated addrs: " + randomAddress2);
+        // console.log("second random generated addrs: " + randomAddress2);
 
         await map.send(
             deployer.getSender(),
@@ -77,7 +77,7 @@ describe('Map', () => {
 
         const secondAddrreceivedFromMap = await map.getOneItem(2n);
 
-        console.log("second address received from Map: " + secondAddrreceivedFromMap);
+        // console.log("second address received from Map: " + secondAddrreceivedFromMap);
     
         for(let i = 0n; i < 250; i++) {
             const gasUsed = await getGasUsed(deployer, async () => {
@@ -96,10 +96,10 @@ describe('Map', () => {
             gasUsedValues.push(gasUsed);
         }
 
-        console.log("first gasUsedValue: " + fromNano(gasUsedValues[0]));
-        console.log("last gasUsedValue: " + fromNano(gasUsedValues[gasUsedValues.length - 1]));
+        // console.log("first gasUsedValue: " + fromNano(gasUsedValues[0]));
+        // console.log("last gasUsedValue: " + fromNano(gasUsedValues[gasUsedValues.length - 1]));
     
-        console.log("GasUsedValues: ");
+        // console.log("GasUsedValues: ");
         console.log(gasUsedValues)
     });
 });

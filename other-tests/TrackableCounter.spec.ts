@@ -11,7 +11,7 @@ describe('TrackableCounter', () => {
     beforeEach(async () => {
         blockchain = await Blockchain.create();
 
-        trackableCounter = blockchain.openContract(await TrackableCounter.fromInit());
+        trackableCounter = blockchain.openContract(await TrackableCounter.fromInit(5n));
 
         deployer = await blockchain.treasury('deployer');
 
